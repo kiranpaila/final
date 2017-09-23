@@ -1,0 +1,70 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Funds</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sponsor</th>
+      <th>Amount</th>
+      <th>Status</th>
+      <th>Event</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @funds.each do |fund| %>
+      <tr>
+        <td><%= fund.sponsor %></td>
+        <td><%= fund.amount %></td>
+        <td><%= fund.status %></td>
+        <td><%= fund.event %></td>
+        <td><%= link_to 'Show', fund %></td>
+        <td><%= link_to 'Edit', edit_fund_path(fund) %></td>
+        <td><%= link_to 'Destroy', fund, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Fund', new_fund_path %>
+
+<br> Total fund= <%= @total %></br>
+<hr>
+
+<table>
+  <thead>
+    <tr>
+      <th>For</th>
+      <th>Amount</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <strong>Expenses</strong>
+    <% @expenses.each do |expense| %>
+      <tr>
+        <td><%= expense.for %></td>
+        <td><%= expense.amount %></td>
+        <td><%= link_to 'Show', expense %></td>
+        <td><%= link_to 'Edit', edit_expense_path(expense) %></td>
+        <td><%= link_to 'Destroy', expense, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Expense', new_expense_path %>
+  
+  <br> Total expenses= <%= @total2 %></br>
+  <br> Balance= <%= @total-@total2 %></br>
+</table>
+
+<br>
+

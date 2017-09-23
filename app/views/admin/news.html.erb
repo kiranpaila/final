@@ -1,0 +1,19 @@
+<%= raw(@html) %>
+
+
+<h6><%=  session[:em] %></h6>
+
+<form action="news" method="POST">
+
+<%= label_tag :newstitle ,"Title" %>
+<%= text_field_tag :newstitle %>
+
+
+
+<%= label_tag :newscontent ,"Content" %>
+<%= text_field_tag :newscontent %>
+
+
+<%= submit_tag %>
+
+</form>

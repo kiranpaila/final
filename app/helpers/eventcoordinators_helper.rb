@@ -1,0 +1,2 @@
+module EventcoordinatorsHelper
+end

@@ -1,0 +1,67 @@
+<%= form_with(model: event, local: true) do |form| %>
+  <% if event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h2>
+
+      <ul>
+      <% event.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :Title %>
+    <%= form.text_field :Title, id: :event_Title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Description %>
+    <%= form.text_area :Description, id: :event_Description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Venue %>
+    <%= form.text_field :Venue, id: :event_Venue %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Time %>
+    <%= form.time_select :Time, id: :event_Time %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Date %>
+    <%= form.date_select :Date, id: :event_Date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Cost %>
+    <%= form.number_field :Cost, id: :event_Cost %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Department %>
+    <%= form.text_field :Department, id: :event_Department %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Type %>
+    <%= form.text_field :Type, id: :event_Type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :CordinatorDetails %>
+    <%= form.text_area :CordinatorDetails, id: :event_CordinatorDetails %>
+  </div>
+
+  <div class="field">
+    <%= form.label :add_photo %>
+    <%= form.text_field :add_photo, id: :event_add_photo %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Sponsor:</strong>
+  <%= @fund.sponsor %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @fund.amount %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @fund.status %>
+</p>
+
+<p>
+  <strong>Event:</strong>
+  <%= @fund.event %>
+</p>
+
+<%= link_to 'Edit', edit_fund_path(@fund) %> |
+<%= link_to 'Back', funds_path %>

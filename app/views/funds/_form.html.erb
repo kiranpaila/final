@@ -1,0 +1,37 @@
+<%= form_with(model: fund, local: true) do |form| %>
+  <% if fund.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(fund.errors.count, "error") %> prohibited this fund from being saved:</h2>
+
+      <ul>
+      <% fund.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :sponsor %>
+    <%= form.text_field :sponsor, id: :fund_sponsor %>
+  </div>
+
+  <div class="field">
+    <%= form.label :amount %>
+    <%= form.number_field :amount, id: :fund_amount %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.text_field :status, id: :fund_status %>
+  </div>
+
+  <div class="field">
+    <%= form.label :event %>
+    <%= form.text_field :event, id: :fund_event %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
