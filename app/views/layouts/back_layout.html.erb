@@ -1,0 +1,47 @@
+<%= stylesheet_link_tag    'welcomeindex', media: 'all', 'data-turbolinks-track' => true %>
+<%= javascript_include_tag 'welcomeindex' %>
+
+<div id="front-container" class="container-fluid">
+
+  <div class="row">
+
+    <nav class="navbar navbar-expand-md fixed-top navbar-light bg-light" >
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="container nav navbar-nav d-flex justify-content-between">
+
+          <% if logged_in? %>
+            <li class="nav-item"><%= link_to 'Users', users_path, :class => "nav-link" %></li>
+            <li class="nav-item"><%= link_to 'Events', events_path, :class => "nav-link" %></li>
+            <li class="nav-item"><%= link_to 'Fund Management', funds_path, :class => "nav-link" %></li>
+            <li class="nav-item"><%= link_to 'Registration', registrations_path, :class => "nav-link" %></li>
+            <li class="nav-item"><%= link_to 'Feedback', feedbacks_path, :class => "nav-link" %></li>
+            <li class="nav-item"><%= link_to 'News', news_index_path, :class => "nav-link" %></li>
+            <li class="nav-item"><%= link_to 'Coordinators', eventcoordinators_path, :class => "nav-link" %></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="profileDD" data-toggle="dropdown" href="javascript:void(0)" role="button" aria-haspopup="true" aria-expanded="false">
+                Me
+              </a>
+              <div class="dropdown-menu" aria-labelledby="profileDD">
+                <%= link_to 'Edit Profile', edit_user_path(@current_user), :class => "dropdown-item" %>
+                <%= link_to 'Logout', logout_path, :method => :delete, :class => "dropdown-item" %>
+              </div>
+            </li>
+          <% end %>
+
+        </ul>
+      </div>
+    </nav>
+
+    <div  id="content-container" class="content container-fluid" style="margin: 40px auto 38px auto">
+
+      <%= yield %>
+
+    </div>
+
+  </div>
+
+</div>

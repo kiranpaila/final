@@ -3,179 +3,144 @@ class AdminController < ApplicationController
 
 
   end
-  def printnav
-
-@html="
-<div >
-<a href=\"users\">Users</a>
-
-<a href=\"events\">Events</a>
-<a href=\"funds\">Funds</a>
-<a href=\"feedback\">Feedback </a>
-<a href=\"news\">News </a>
-<a href=\"registration\">Registration </a>
-
-<a href=\"logout\">Logout </a>
-
-</div>"
-
-
-  end
-  def dashboard
-printnav()
-
-
-
-  end
-
-  def events
-printnav()
-
-
-
-  end
-
-  def users
-
-printnav()
 
 
 
 
-  end
+
 
   def adduser
 
-if request.method=="GET"
+    if request.method=="GET"
 
-	printnav()
-
-
- else
-	em=[]
-  	p=params[:pass]
-  	cp=params[:cpass]
-  	n=params[:name]
-
-  	if(not p==cp )
-em.push 'Password is not Same.'
-session[:em]=em
-redirect_to action:adduser
-else
-userd=User.new(name:n,password:p)
-userd.save
+      printnav()
 
 
-redirect_to action:"dashboard"
+    else
+      em=[]
+      p=params[:pass]
+      cp=params[:cpass]
+      n=params[:name]
+
+      if(not p==cp )
+        em.push 'Password is not Same.'
+        session[:em]=em
+        redirect_to action:adduser
+      else
+        userd=User.new(name:n,password:p)
+        userd.save
 
 
-  	end
+        redirect_to action:"dashboard"
 
 
-  end
+      end
+
+
+    end
 
 
   end
 
   def edituserdetails
 
-@usr=User.find(params[:id])
-	
-	if(request.method=="GET")
-printnav()
+    @usr=User.find(params[:id])
+
+    if(request.method=="GET")
+      printnav()
 
 
 
-else
-@usr.destroy
+    else
+      @usr.destroy
 
 
-em=[]
-  	p=params[:pass]
-  	cp=params[:cpass]
-  	n=params[:name]
+      em=[]
+      p=params[:pass]
+      cp=params[:cpass]
+      n=params[:name]
 
-  	if(not p==cp )
-em.push 'Password is not Same.'
-session[:em]=ems
-redirect_to action:adduserdetails
-else
-userd=User.new(name:n,password:p)
-userd.save
-redirect_to action:"edituser"
-
-
-end
-	
+      if(not p==cp )
+        em.push 'Password is not Same.'
+        session[:em]=ems
+        redirect_to action:adduserdetails
+      else
+        userd=User.new(name:n,password:p)
+        userd.save
+        redirect_to action:"edituser"
 
 
+      end
+
+
+
+
+    end
+  end
+  def logout
+    session[:userdetails]=nil
+
+    redirect_to controller:"sessions" ,action:"new"
 
   end
-end
-def logout
- session[:userdetails]=nil
-
- redirect_to controller:"sessions" ,action:"new"
-
-	end
   def edituser
 
-printnav()
+    printnav()
 
-@us=User.all
+    @us=User.all
 
 
   end
   def deleteuser
-printnav()
+    printnav()
 
-@u=User.find(params[:id])
-@u.destroy
+    @u=User.find(params[:id])
+    @u.destroy
 
-redirect_to action:"edituser"
+    redirect_to action:"edituser"
 
   end
 
   def funds
-printnav()
+    printnav()
 
 
 
   end
   def registration
-printnav()
+    printnav()
 
 
 
   end
   def news
-printnav()
+    printnav()
 
 
 
   end
 
   def feedback
-printnav()
+    printnav()
 
 
 
   end
-def registrationfee
-printnav()
+  def registrationfee
+    printnav()
 
 
 
   end
 
   def expenditures
-printnav()
+    printnav()
 
 
 
   end
-def sponsorships
-printnav()
+  def sponsorships
+    printnav()
 
 
 

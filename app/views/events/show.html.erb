@@ -47,7 +47,8 @@
 
 <p>
   <strong>Add photo:</strong>
-  <%= @event.add_photo %>
+  <%#= <%=  @event.add_photo%>
+  <%= image_tag @event.add_photo.thumb.url %>
 </p>
 
 <%= link_to 'Edit', edit_event_path(@event) %> |

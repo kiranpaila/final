@@ -1,4 +1,6 @@
 class EventsController < ApplicationController
+  layout :resolve_layout
+  before_action :authorize, :except => [:show]
   before_action :set_event, only: [:show, :edit, :update, :destroy]
 
   # GET /events
@@ -62,13 +64,17 @@ class EventsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_event
-      @event = Event.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_event
+    @event = Event.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def event_params
-      params.require(:event).permit(:Title, :Description, :Venue, :Time, :Date, :Cost, :Department, :Type, :CordinatorDetails, :add_photo)
-    end
+  def resolve_layout
+    action_name == 'show' ? 'front_layout' : 'back_layout'
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def event_params
+    params.require(:event).permit(:Title, :Description, :Venue, :Time, :Date, :Cost, :Department, :Type, :CordinatorDetails, :add_photo)
+  end
 end

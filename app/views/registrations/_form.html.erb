@@ -18,7 +18,7 @@
 
   <div class="field">
     <%= form.label :Event %>
-    <%= form.text_field :Event, id: :registration_Event %>
+    <%= form.select( :Event, Event.all.map{|u| [u.Title]}, {:include_blank => true}) %>
   </div>
 
   <div class="field">

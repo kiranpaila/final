@@ -22,11 +22,6 @@
   </div>
 
   <div class="field">
-    <%= form.label :Name %>
-    <%= form.text_field :Name, id: :eventcoordinator_Name %>
-  </div>
-
-  <div class="field">
     <%= form.label :Contact_no %>
     <%= form.text_field :Contact_no, id: :eventcoordinator_Contact_no %>
   </div>
@@ -37,6 +32,6 @@
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Add Coordinator' %>
   </div>
 <% end %>

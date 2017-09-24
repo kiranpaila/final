@@ -1,4 +1,6 @@
 class FundsController < ApplicationController
+  layout "back_layout"
+  before_action :authorize
   before_action :set_fund, only: [:show, :edit, :update, :destroy]
 
   # GET /funds
@@ -7,8 +9,21 @@ class FundsController < ApplicationController
     @funds = Fund.all
 
     @expenses = Expense.all
-    @total = Fund.where(status: 'yes').sum(:amount)
-    @total2 =Expense.sum(:amount)
+
+    @events = Event.all
+
+    @reg_fees = Event.joins(:registrations).select('events.Title, events.Cost, count(registrations.id) as no_of_entries').group('events.Title')
+
+    @total1 = Fund.where(status: 'received').sum(:amount)
+    @total2 = Expense.sum(:amount)
+    @total3 = 0
+
+    @reg_fees.each do  |f|
+      @total3 += f.Cost*f.no_of_entries
+    end
+
+    @total = @total1 + @total3 - @total2
+
   end
 
   # GET /funds/1
@@ -66,13 +81,13 @@ class FundsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_fund
-      @fund = Fund.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_fund
+    @fund = Fund.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def fund_params
-      params.require(:fund).permit(:sponsor, :amount, :status, :event)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def fund_params
+    params.require(:fund).permit(:sponsor, :amount, :status, :event)
+  end
 end

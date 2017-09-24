@@ -12,26 +12,26 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :sponsor %>
+    <%= form.label :Sponsor %>
     <%= form.text_field :sponsor, id: :fund_sponsor %>
   </div>
 
   <div class="field">
-    <%= form.label :amount %>
+    <%= form.label :Event %>
+    <%= form.select( :event, Event.all.map{|u| [u.Title]}, {:include_blank => true}) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Amount %>
     <%= form.number_field :amount, id: :fund_amount %>
   </div>
 
   <div class="field">
-    <%= form.label :status %>
-    <%= form.text_field :status, id: :fund_status %>
-  </div>
-
-  <div class="field">
-    <%= form.label :event %>
-    <%= form.text_field :event, id: :fund_event %>
+    <%= form.label :Status %>
+    <%= form.select( :status, ['received', 'pending'], {:include_blank => true}) %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Add Fund'%>
   </div>
 <% end %>

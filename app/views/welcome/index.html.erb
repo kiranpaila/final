@@ -9,10 +9,11 @@
         <div class="holder">
           <ul id="newsPosts" class="">
             <%#= it will go in loop manner %>
-            <% for i in 0..5 do %>
+            <% News.all.each do |news| %>
                 <li class="card">
                   <div class="card-body">
-                     Here update will go
+                    <%= news.created_at.strftime('%m/%d/%Y') %><br/>
+                     <%= news.message %>
                   </div>
                 </li>
             <% end %>

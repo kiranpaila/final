@@ -1,4 +1,7 @@
 class RegistrationsController < ApplicationController
+  layout "front_layout", :only => [:new]
+  layout "back_layout"
+
   before_action :set_registration, only: [:show, :edit, :update, :destroy]
 
   # GET /registrations
@@ -62,13 +65,13 @@ class RegistrationsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_registration
-      @registration = Registration.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_registration
+    @registration = Registration.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def registration_params
-      params.require(:registration).permit(:Name, :Event, :Contact_no, :Email, :College)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def registration_params
+    params.require(:registration).permit(:Name, :Event, :Contact_no, :Email, :College)
+  end
 end

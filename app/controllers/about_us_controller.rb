@@ -1,4 +1,5 @@
 class AboutUsController < ApplicationController
-  def index
+  layout "front_layout"
+    def index
   end
 end

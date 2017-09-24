@@ -33,8 +33,9 @@
 <%= link_to 'New Fund', new_fund_path %>
 
 <br> Total fund= <%= @total %></br>
-<hr>
+<hr/>
 
+<h1>Expenses</h1>
 <table>
   <thead>
     <tr>
@@ -45,7 +46,7 @@
   </thead>
 
   <tbody>
-  <strong>Expenses</strong>
+
     <% @expenses.each do |expense| %>
       <tr>
         <td><%= expense.for %></td>
@@ -61,10 +62,39 @@
 <br>
 
 <%= link_to 'New Expense', new_expense_path %>
-  
+
   <br> Total expenses= <%= @total2 %></br>
-  <br> Balance= <%= @total-@total2 %></br>
+  <hr/>
+
+  <h1>Registration fee</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Event</th>
+        <th>fee</th>
+        <th>No of Entries</th>
+        <th>Total</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+      <% @reg_fees.each do |reg_fee| %>
+        <tr>
+          <td><%= reg_fee.Title %></td>
+          <td><%= reg_fee.Cost %></td>
+          <td><%= reg_fee.no_of_entries %></td>
+          <td><%= (reg_fee.Cost)*(reg_fee.no_of_entries) %></td>
+          <td><%= link_to 'Show' %></td>
+          <td><%= link_to 'Edit'%></td>
+          <td><%= link_to 'Destroy', method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br> Balance= <%= @total %></br>
 </table>
 
 <br>
-

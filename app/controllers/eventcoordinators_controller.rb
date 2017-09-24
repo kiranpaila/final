@@ -1,4 +1,6 @@
 class EventcoordinatorsController < ApplicationController
+  layout "back_layout"
+  before_action :authorize, :except => [:show]
   before_action :set_eventcoordinator, only: [:show, :edit, :update, :destroy]
 
   # GET /eventcoordinators
@@ -62,13 +64,13 @@ class EventcoordinatorsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_eventcoordinator
-      @eventcoordinator = Eventcoordinator.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_eventcoordinator
+    @eventcoordinator = Eventcoordinator.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def eventcoordinator_params
-      params.require(:eventcoordinator).permit(:Event, :Name, :Name, :Contact_no, :Email)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def eventcoordinator_params
+    params.require(:eventcoordinator).permit(:Event, :Name, :Name, :Contact_no, :Email)
+  end
 end

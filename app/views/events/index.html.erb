@@ -25,8 +25,8 @@
         <td><%= event.Title %></td>
         <td><%= event.Description %></td>
         <td><%= event.Venue %></td>
-        <td><%= event.Time %></td>
-        <td><%= event.Date %></td>
+        <td><%= event.Time.strftime('%H:%M') %></td>
+        <td><%= event.Date.strftime('%m/%d/%Y') %></td>
         <td><%= event.Cost %></td>
         <td><%= event.Department %></td>
         <td><%= event.Type %></td>
