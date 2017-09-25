@@ -1,36 +1,69 @@
 <%= form_for @feedback do |form| %>
-  <% if @feedback.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@feedback.errors.count, "error") %> prohibited this feedback from being saved:</h2>
 
-      <ul>
-      <% @feedback.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+  <div class="row" style="padding: 4rem 2rem">
+    <div class="col-lg-2 col-md-0">
     </div>
-  <% end %>
 
-  <% if flash[:notice] %>
-    <p id="notice"><%= flash[:notice] %></p>
-  <% end %>
+    <div class="col-lg-8 col-md-0">
+      <div class="text-center" >
+        <h3>Give your Feedback</h3>
+      </div>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :feedback_name %>
+      <form style="float:none; clear:both">
+        <div class="form-group row">
+          <%= form.label :name, :class=>"col-sm-2 col-form-label" %>
+          <div class="col-sm-10">
+            <%= form.text_field :name, id: :feedback_name, :class => 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group row">
+          <%= form.label :email, :class => 'col-sm-2 col-form-label' %>
+          <div class="col-sm-10">
+            <%= form.text_field :email, id: :feedback_email, :class => 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group row">
+          <%= form.label :message, :class => 'col-sm-2 col-form-label' %>
+          <div class="col-sm-10">
+            <%= form.text_area :message, id: :feedback_message, :class => 'form-control' %>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-sm-12">
+            <%= form.submit "Submit Feedback", :class => "btn btn-light link-unstyle pull-right", :role=>"btn"%>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="col-lg-2 col-md-0">
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email, id: :feedback_email %>
+  <div class="row">
+    <div class="col-lg-2 col-md-0">
+    </div>
+    <div class="col-lg-8 col-md-0">
+      <div class="alert">
+        <% if @feedback.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@feedback.errors.count, "error") %> prohibited this feedback from being saved:</h2>
+
+            <ul>
+            <% @feedback.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+      </div>
+    </div>
+
+
+    <div class="col-lg-2 col-md-0">
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :message %>
-    <%= form.text_area :message, id: :feedback_message %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit "Submit Feedback"%>
-  </div>
-<% end %>
+<%end%>

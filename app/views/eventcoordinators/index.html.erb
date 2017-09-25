@@ -1,34 +1,35 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Eventcoordinators</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Event</th>
-      <th>Name</th>
-      <th>Name</th>
-      <th>Contact no</th>
-      <th>Email</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @eventcoordinators.each do |eventcoordinator| %>
+<div class="row">
+  <div class="col-lg-2 col-md-0"></div>
+  <div class="col-lg-8 col-md-12">
+    <table class="table table-striped table-inverse">
       <tr>
-        <td><%= eventcoordinator.Event %></td>
-        <td><%= eventcoordinator.Name %></td>
-        <td><%= eventcoordinator.Contact_no %></td>
-        <td><%= eventcoordinator.Email %></td>
-        <td><%= link_to 'Show', eventcoordinator %></td>
-        <td><%= link_to 'Edit', edit_eventcoordinator_path(eventcoordinator) %></td>
-        <td><%= link_to 'Destroy', eventcoordinator, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <h3 colspan="6" style="text-align:center">Co-ordinators</h3>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+      <tr>
+        <th>Event</th>
+        <th>Name</th>
+        <th>Contact no</th>
+        <th>Email</th>
+        <th colspan="3"></th>
+      </tr>
 
-<br>
+      <% @eventcoordinators.each do |eventcoordinator| %>
+        <tr>
+          <td><%= eventcoordinator.Event %></td>
+          <td><%= eventcoordinator.Name %></td>
+          <td><%= eventcoordinator.Contact_no %></td>
+          <td><%= eventcoordinator.Email %></td>
+          <td><%= link_to 'Edit', edit_eventcoordinator_path(eventcoordinator), :class =>'link-unstyle' %></td>
+          <td><%= link_to 'Remove', eventcoordinator, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'link-unstyle' %></td>
+        </tr>
+      <% end %>
 
-<%= link_to 'New Eventcoordinator', new_eventcoordinator_path %>
+    </table>
+    <tr>
+      <td colspan="2"><%= link_to 'Add Co-ordinator', new_eventcoordinator_path, :class => "btn btn-light link-unstyle pull-right", :role=>"btn" %></td>
+    </tr>
+  </div>
+  <div class="col-lg-2 col-md-0"></div>
+</div>

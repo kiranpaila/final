@@ -1,7 +1,7 @@
 class ExpensesController < ApplicationController
   layout "back_layout"
-  before_action :authorize, :except => [:show]
-  before_action :set_expense, only: [:show, :edit, :update, :destroy]
+  before_action :authorize
+  before_action :set_expense, only: [:edit, :update, :destroy]
 
   # GET /expenses
   # GET /expenses.json
@@ -30,13 +30,14 @@ class ExpensesController < ApplicationController
 
     respond_to do |format|
       if @expense.save
-        format.html { redirect_to @expense, notice: 'Expense was successfully created.' }
-        format.json { render :show, status: :created, location: @expense }
+        format.html { redirect_to funds_path, notice: 'Expense was successfully created.' }
+        format.json { render :index, status: :created, location: funds_path }
       else
         format.html { render :new }
         format.json { render json: @expense.errors, status: :unprocessable_entity }
       end
     end
+
   end
 
   # PATCH/PUT /expenses/1
@@ -44,8 +45,8 @@ class ExpensesController < ApplicationController
   def update
     respond_to do |format|
       if @expense.update(expense_params)
-        format.html { redirect_to @expense, notice: 'Expense was successfully updated.' }
-        format.json { render :show, status: :ok, location: @expense }
+        format.html { redirect_to funds_path, notice: 'Expense was successfully updated.' }
+        format.json { render :index, status: :ok, location: funds_path }
       else
         format.html { render :edit }
         format.json { render json: @expense.errors, status: :unprocessable_entity }

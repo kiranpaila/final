@@ -1,7 +1,7 @@
 class EventcoordinatorsController < ApplicationController
   layout "back_layout"
-  before_action :authorize, :except => [:show]
-  before_action :set_eventcoordinator, only: [:show, :edit, :update, :destroy]
+  before_action :authorize
+  before_action :set_eventcoordinator, only: [ :edit, :update, :destroy]
 
   # GET /eventcoordinators
   # GET /eventcoordinators.json
@@ -30,8 +30,8 @@ class EventcoordinatorsController < ApplicationController
 
     respond_to do |format|
       if @eventcoordinator.save
-        format.html { redirect_to @eventcoordinator, notice: 'Eventcoordinator was successfully created.' }
-        format.json { render :show, status: :created, location: @eventcoordinator }
+        format.html { redirect_to eventcoordinators_path, notice: 'Eventcoordinator was successfully created.' }
+        format.json { render :index, status: :created, location: @eventcoordinator}
       else
         format.html { render :new }
         format.json { render json: @eventcoordinator.errors, status: :unprocessable_entity }
@@ -44,8 +44,8 @@ class EventcoordinatorsController < ApplicationController
   def update
     respond_to do |format|
       if @eventcoordinator.update(eventcoordinator_params)
-        format.html { redirect_to @eventcoordinator, notice: 'Eventcoordinator was successfully updated.' }
-        format.json { render :show, status: :ok, location: @eventcoordinator }
+        format.html { redirect_to eventcoordinators_path, notice: 'Eventcoordinator was successfully updated.' }
+        format.json { render :index, status: :ok, location: @eventcoordinator }
       else
         format.html { render :edit }
         format.json { render json: @eventcoordinator.errors, status: :unprocessable_entity }

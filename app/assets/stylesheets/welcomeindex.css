@@ -14,10 +14,14 @@
  *= require application
  */
 
+body{
+  background-color: grey;
+}
+
  .jumbotron{
   height: calc(100vh - 78px);
   min-height: calc(100vh - 155px);
-  //overflow: hidden;
+  overflow: auto;
 }
 
 .jumbotron{
@@ -32,12 +36,6 @@
 
 }
 
-@media (min-width: 992px){
-
-  #content-container{
-    height: 572px;
-  }
-}
 
 div.jumbotron.col-lg-2.col-md-12{
   padding: 2rem 1rem;
@@ -45,6 +43,7 @@ div.jumbotron.col-lg-2.col-md-12{
 
 .footer {
     position: fixed;
+    left: 0;
     bottom: 0;
     width: 100%;
     //height: 56px;
@@ -230,7 +229,7 @@ div.jumbotron.col-lg-2.col-md-12{
 
 .tz-gallery .lightbox img {
     border-radius: 4px 4px 0 0;
-    width: 300px;
+    width: 100%;
     height: 200px;
 }
 
@@ -249,4 +248,37 @@ div.jumbotron.col-lg-2.col-md-12{
     font-size: 12px;
     color: #7b7d7d;
     margin: 0;
+}
+
+.admin-login{
+  background: url('/admilogin.png');
+  background-repeat: no-repeat;
+  height: inherit;
+}
+
+.front-image{
+  background: url('/back.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: inherit;
+}
+
+.back-image{
+  background: url('/back1.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: inherit;
+}
+
+.jumbotron.welcome{
+  text-align: center;
+  vertical-align: middle;
+  line-height: 90%;
+}
+
+.jumbotron.welcome .title{
+  font-size: 70px;
+  color: black;
+  # font-family: 'Trocchi', serif;
+   font-family: 'Raleway',sans-serif
 }

@@ -1,5 +1,6 @@
 class NewsController < ApplicationController
   layout "back_layout"
+  before_action :authorize, :only => [:new]
   def index
     @news = News.all
   end

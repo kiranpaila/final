@@ -1,26 +1,55 @@
-<%= form_for @news do |form| %>
-  <% if @news.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@news.errors.count, "error") %> prohibited this feedback from being saved:</h2>
+<%= form_for @news do |form|  %>
 
-      <ul>
-      <% @news.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+  <div class="row">
+    <div class="col-lg-2 col-md-0">
     </div>
-  <% end %>
 
-  <% if flash[:notice] %>
-    <p id="notice"><%= flash[:notice] %></p>
-  <% end %>
+    <div class="col-lg-8 col-md-0">
 
-  <div class="field">
-    <%= form.label :message %>
-    <%= form.text_field :message, id: :news_name %>
+      <form style="float:none; clear:both">
+        <div class="form-group row">
+          <%= form.label :message, :class => 'col-sm-2 col-form-label' %>
+          <div class="col-sm-10">
+            <%= form.text_field :message, id: :news_name, :class => 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-12">
+            <%= link_to 'Back', news_index_path, :class => "btn btn-light link-unstyle pull-left", :role=>"btn" %>
+            <%= form.submit "Add News", :class => "btn btn-light link-unstyle pull-right", :role=>"btn"%>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="col-lg-2 col-md-0">
+    </div>
   </div>
 
-  <div class="actions">
-    <%= form.submit "Add News"%>
+  <div class="row">
+    <div class="col-lg-2 col-md-0">
+    </div>
+    <div class="col-lg-8 col-md-0">
+      <div class="alert">
+        <% if @news.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@news.errors.count, "error") %> prohibited this feedback from being saved:</h2>
+
+            <ul>
+            <% @news.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+
+      </div>
+    </div>
+
+
+    <div class="col-lg-2 col-md-0">
+    </div>
   </div>
-<% end %>
+
+<%end%>

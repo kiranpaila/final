@@ -1,27 +1,63 @@
+
+
 <%= form_with(model: expense, local: true) do |form| %>
-  <% if expense.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(expense.errors.count, "error") %> prohibited this expense from being saved:</h2>
 
-      <ul>
-      <% expense.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+
+  <div class="row">
+    <div class="col-lg-2 col-md-0">
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= form.label :Purpose %>
-    <%= form.text_field :for, id: :expense_for %>
+    <div class="col-lg-8 col-md-0">
+
+      <form style="float:none; clear:both">
+        <div class="form-group row">
+          <%= form.label :Purpose, :class=>"col-sm-2 col-form-label" %>
+          <div class="col-sm-10">
+            <%= form.text_field :for, id: :expense_for, :class => 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group row">
+          <%= form.label :Amount, :class => 'col-sm-2 col-form-label' %>
+          <div class="col-sm-10">
+            <%= form.text_field :amount, id: :expense_amount, :class => 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-12">
+            <%= link_to 'Back', funds_path, :class => "btn btn-light link-unstyle pull-left", :role=>"btn" %>
+            <%= form.submit "Save Details", :class => "btn btn-light link-unstyle pull-right", :role=>"btn"%>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="col-lg-2 col-md-0">
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :Amount %>
-    <%= form.number_field :amount, id: :expense_amount %>
+  <div class="row">
+    <div class="col-lg-2 col-md-0">
+    </div>
+    <div class="col-lg-8 col-md-0">
+      <div class="alert">
+        <% if expense.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(expense.errors.count, "error") %> prohibited this expense from being saved:</h2>
+
+            <ul>
+            <% expense.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+      </div>
+    </div>
+
+
+    <div class="col-lg-2 col-md-0">
+    </div>
   </div>
 
-  <div class="actions">
-    <%= form.submit 'Add Expense' %>
-  </div>
-<% end %>
+<%end%>

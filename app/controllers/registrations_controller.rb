@@ -1,8 +1,8 @@
 class RegistrationsController < ApplicationController
-  layout "front_layout", :only => [:new]
-  layout "back_layout"
+  layout :resolve_layout
+  before_action :authorize, :except => [:new]
 
-  before_action :set_registration, only: [:show, :edit, :update, :destroy]
+  before_action :set_registration, only: [:edit, :update, :destroy]
 
   # GET /registrations
   # GET /registrations.json
@@ -31,8 +31,8 @@ class RegistrationsController < ApplicationController
 
     respond_to do |format|
       if @registration.save
-        format.html { redirect_to @registration, notice: 'Registration was successfully created.' }
-        format.json { render :show, status: :created, location: @registration }
+        format.html { redirect_to root_path, notice: 'Registration was successfully created.' }
+        format.json { render 'root', status: :created, location: registrations_path }
       else
         format.html { render :new }
         format.json { render json: @registration.errors, status: :unprocessable_entity }
@@ -45,8 +45,8 @@ class RegistrationsController < ApplicationController
   def update
     respond_to do |format|
       if @registration.update(registration_params)
-        format.html { redirect_to @registration, notice: 'Registration was successfully updated.' }
-        format.json { render :show, status: :ok, location: @registration }
+        format.html { redirect_to registrations_path, notice: 'Registration was successfully updated.' }
+        format.json { render :index, status: :ok, location: registrations_path }
       else
         format.html { render :edit }
         format.json { render json: @registration.errors, status: :unprocessable_entity }
@@ -68,6 +68,10 @@ class RegistrationsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_registration
     @registration = Registration.find(params[:id])
+  end
+
+  def resolve_layout
+    action_name == 'new' ? 'front_layout' : 'back_layout'
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

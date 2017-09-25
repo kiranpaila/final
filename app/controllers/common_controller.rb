@@ -1,5 +1,0 @@
-class CommonController < ApplicationController
-
-
-
-end

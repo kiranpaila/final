@@ -1,5 +1,6 @@
 <%= stylesheet_link_tag    'welcomeindex', media: 'all', 'data-turbolinks-track' => true %>
 <%= javascript_include_tag 'welcomeindex' %>
+<%= csrf_meta_tags %>
 
 <div id="front-container" class="container-fluid">
 
@@ -26,7 +27,7 @@
                 Me
               </a>
               <div class="dropdown-menu" aria-labelledby="profileDD">
-                <%= link_to 'Edit Profile', edit_user_path(@current_user), :class => "dropdown-item" %>
+                <%= link_to 'Edit Profile', edit_user_path(current_user), :class => "dropdown-item" %>
                 <%= link_to 'Logout', logout_path, :method => :delete, :class => "dropdown-item" %>
               </div>
             </li>
@@ -36,7 +37,7 @@
       </div>
     </nav>
 
-    <div  id="content-container" class="content container-fluid" style="margin: 40px auto 38px auto">
+    <div  id="content-container" class="jumbotron content container-fluid back-image" style="margin: 40px auto 38px auto; background-color:grey; height:100%; overflow:hidden">
 
       <%= yield %>
 

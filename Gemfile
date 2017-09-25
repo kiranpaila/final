@@ -38,6 +38,7 @@ gem 'jquery-rails'
 gem "font-awesome-rails"
 gem 'validates_email_format_of'
 gem 'jquery-atwho-rails'
+gem 'activerecord-session_store'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

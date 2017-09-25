@@ -1,72 +1,106 @@
-<%= form_for @event, html: { multipart: true } do |form| %>
-  <% if @event.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+<%= form_for @event do |form| %>
 
-      <ul>
-      <% @event.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+
+  <div class="row">
+    <div class="col-lg-2 col-md-0">
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= form.label :Title %>
-    <%= form.text_field :Title, id: :event_Title %>
+    <div class="col-lg-8 col-md-0">
+        <div class="form-group row">
+          <%= form.label :Title, :class => 'col-sm-2 col-form-label' %>
+          <div class="col-sm-10">
+            <%= form.text_field :Title, id: :event_Title, :class => 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group row">
+          <%= form.label :Description, :class => 'col-sm-2 col-form-label' %>
+          <div class="col-sm-10">
+            <%= form.text_area :Description, id: :event_Description, :class => 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group row">
+          <%= form.label :Venue, :class => 'col-sm-2 col-form-label' %>
+          <div class="col-sm-10">
+            <%= form.text_field :Venue, id: :event_Venue, :class => 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group row">
+          <%= form.label :Time, :class => 'col-sm-2 col-form-label' %>
+          <div class="col-sm-10">
+            <%= form.time_select :Time, id: :event_Time, :class => 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group row">
+          <%= form.label :Date, :class => 'col-sm-2 col-form-label' %>
+          <div class="col-sm-10">
+            <%= form.date_select :Date, id: :event_Date, :class => 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group row">
+          <%= form.label :Fee, :class => 'col-sm-2 col-form-label' %>
+          <div class="col-sm-10">
+            <%= form.number_field :Cost, id: :event_Cost, :class => 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group row">
+          <%= form.label :Department, :class => 'col-sm-2 col-form-label' %>
+          <div class="col-sm-10">
+            <%= form.select( :Department, ['Computer Science','Electronics','Robotics','Civil','Mechanical'], {:include_blank => true}, :class => 'form-control') %>
+          </div>
+        </div>
+        <div class="form-group row">
+          <%= form.label :Type, :class => 'col-sm-2 col-form-label' %>
+          <div class="col-sm-10">
+            <%= form.select( :Type, ['Technical','Workshop','Seminar','Informal'], {:include_blank => true}, :class => 'form-control') %>
+          </div>
+        </div>
+        <div class="form-group row">
+          <%= form.label :Coordinator, :class => 'col-sm-2 col-form-label' %>
+          <div class="col-sm-10">
+            <%= form.select( :CordinatorDetails, Eventcoordinator.all.map{|u| [u.Name, u.id]}, {:include_blank => true}, :class => 'form-control') %>
+          </div>
+        </div>
+        <div class="form-group row">
+            <%= form.label :add_photo, :class => 'col-sm-2 col-form-label' %>
+          <div class="col-sm-10">
+            <%= form.file_field :add_photo, id: :event_add_photo, :class => 'form-control' %>
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-12">
+            <%= link_to 'Back', events_path, :class => "btn btn-light link-unstyle pull-left", :role=>"btn" %>
+            <%= form.submit "Add Event", :class => "btn btn-light link-unstyle pull-right", :role=>"btn"%>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="col-lg-2 col-md-0">
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :Description %>
-    <%= form.text_area :Description, id: :event_Description %>
+  <div class="row">
+    <div class="col-lg-2 col-md-0">
+    </div>
+    <div class="col-lg-8 col-md-0">
+      <div class="alert">
+        <% if @event.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+
+            <ul>
+            <% @event.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+      </div>
+    </div>
+
+
+    <div class="col-lg-2 col-md-0">
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :Venue %>
-    <%= form.text_field :Venue, id: :event_Venue %>
-  </div>
-
-  <div class="field">
-    <%= form.label :Time %>
-    <%= form.time_select :Time, id: :event_Time %>
-  </div>
-
-  <div class="field">
-    <%= form.label :Date %>
-    <%= form.date_select :Date, id: :event_Date %>
-  </div>
-
-  <div class="field">
-    <%= form.label :Cost %>
-    <%= form.number_field :Cost, id: :event_Cost %>
-  </div>
-
-  <div class="field">
-    <%= form.label :Department %>
-    <%= form.select( :Department, ['Computer Science','Electronics','Robotics','Civil','Mechanical'], {:include_blank => true}) %>
-  </div>
-
-  <div class="field">
-    <%= form.label :Type %>
-    <%= form.select( :Type, ['Technical','Workshop','Seminar','Informal'], {:include_blank => true}) %>
-  </div>
-
-  <div class="field">
-    <%= form.label :Coordinator %>
-      <%= form.select( :CordinatorDetails, Eventcoordinator.all.map{|u| [u.Name, u.id]}, {:include_blank => true}) %>
-  </div>
-
-  <div class="field">
-    <%= form.label :add_photo %>
-    <%= form.file_field :add_photo, id: :event_add_photo %>
-    <% if form.object.add_photo? %>
-     <%= image_tag form.object.add_photo.thumb.url %>
-     <%= form.label :remove_add_photo %>
-     <%= form.check_box :remove_add_photo %>
-    <% end %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+<%end%>

@@ -1,84 +1,75 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Funds</h1>
+<div class="row">
+  <div class="col-lg-6 col-md-12">
 
-<table>
-  <thead>
-    <tr>
-      <th>Sponsor</th>
-      <th>Amount</th>
-      <th>Status</th>
-      <th>Event</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @funds.each do |fund| %>
+    <table class="table table-striped table-inverse">
       <tr>
-        <td><%= fund.sponsor %></td>
-        <td><%= fund.amount %></td>
-        <td><%= fund.status %></td>
-        <td><%= fund.event %></td>
-        <td><%= link_to 'Show', fund %></td>
-        <td><%= link_to 'Edit', edit_fund_path(fund) %></td>
-        <td><%= link_to 'Destroy', fund, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <h3 colspan="6" style="text-align:center">Sponserships</h3>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Fund', new_fund_path %>
-
-<br> Total fund= <%= @total %></br>
-<hr/>
-
-<h1>Expenses</h1>
-<table>
-  <thead>
-    <tr>
-      <th>For</th>
-      <th>Amount</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-
-    <% @expenses.each do |expense| %>
       <tr>
-        <td><%= expense.for %></td>
-        <td><%= expense.amount %></td>
-        <td><%= link_to 'Show', expense %></td>
-        <td><%= link_to 'Edit', edit_expense_path(expense) %></td>
-        <td><%= link_to 'Destroy', expense, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Sponsor</th>
+        <th>Amount</th>
+        <th>Status</th>
+        <th>Event</th>
+        <th colspan="2"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<br>
+      <% @funds.each do |fund| %>
+        <tr>
+          <td><%= fund.sponsor %></td>
+          <td><%= fund.amount %></td>
+          <td><%= fund.status %></td>
+          <td><%= fund.event %></td>
+          <td><%= link_to 'Edit', edit_fund_path(fund), :class => 'link-unstyle' %></td>
+          <td><%= link_to 'Destroy', fund, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'link-unstyle' %></td>
+        </tr>
+      <% end %>
 
-<%= link_to 'New Expense', new_expense_path %>
+    </table>
+    <tr>
+      <td colspan="6"><%= link_to 'Add Sponser', new_fund_path, :class => "btn btn-light link-unstyle pull-right", :role=>"btn" %></td>
+    </tr>
 
-  <br> Total expenses= <%= @total2 %></br>
-  <hr/>
+  </div>
+  <div class="col-lg-6 col-md-12">
+    <table class="table table-striped table-inverse">
+      <tr>
+        <h3 colspan="6" style="text-align:center">Expenses</h3>
+      </tr>
+      <tr>
+        <th>Purpose</th>
+        <th>Amount</th>
+        <th colspan="2"></th>
+      </tr>
 
-  <h1>Registration fee</h1>
-  <table>
-    <thead>
+      <% @expenses.each do |expense| %>
+        <tr>
+          <td><%= expense.for %></td>
+          <td><%= expense.amount %></td>
+          <td><%= link_to 'Edit', edit_expense_path(expense), :class => 'link-unstyle' %></td>
+          <td><%= link_to 'Delete', expense, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'link-unstyle' %></td>
+        </tr>
+      <% end %>
+
+    </table>
+    <tr>
+      <td colspan="6"><%= link_to 'Add Expense', new_expense_path, :class => "btn btn-light link-unstyle pull-right", :role=>"btn" %></td>
+    </tr>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-6 col-md-12">
+    <table class="table table-striped table-inverse">
+      <tr>
+        <h3 colspan="5" style="text-align:center">Registration Income</h3>
+      </tr>
       <tr>
         <th>Event</th>
         <th>fee</th>
         <th>No of Entries</th>
         <th>Total</th>
-        <th colspan="3"></th>
       </tr>
-    </thead>
-
-    <tbody>
 
       <% @reg_fees.each do |reg_fee| %>
         <tr>
@@ -86,15 +77,38 @@
           <td><%= reg_fee.Cost %></td>
           <td><%= reg_fee.no_of_entries %></td>
           <td><%= (reg_fee.Cost)*(reg_fee.no_of_entries) %></td>
-          <td><%= link_to 'Show' %></td>
-          <td><%= link_to 'Edit'%></td>
-          <td><%= link_to 'Destroy', method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
-    </tbody>
-  </table>
 
-  <br> Balance= <%= @total %></br>
-</table>
+    </table>
+  </div>
+  <div class="col-lg-6 col-md-12">
+    <table class="table table-striped table-inverse">
+      <tr>
+        <h3 colspan="6" style="text-align:center">Summary</h3>
+      </tr>
+      <tr>
+        <th>Head</th>
+        <th>Amount</th>
+      </tr>
 
-<br>
+      <tr>
+        <td>Sponsership</td>
+        <td><%= @total1 %></td>
+      </tr>
+      <tr>
+        <td>Expense</td>
+        <td><%= @total2 %></td>
+      </tr>
+      <tr>
+        <td>Registration Fee</td>
+        <td><%= @total3 %></td>
+      </tr>
+
+      <tr>
+        <th>Balance</th>
+        <th><%= @total %></th>
+      </tr>
+    </table>
+  </div>
+</div>

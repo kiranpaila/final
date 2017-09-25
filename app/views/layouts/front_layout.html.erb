@@ -1,5 +1,6 @@
 <%= stylesheet_link_tag    'welcomeindex', media: 'all', 'data-turbolinks-track' => true %>
 <%= javascript_include_tag 'welcomeindex' %>
+<%= csrf_meta_tags %>
 
 <div id="front-container" class="container-fluid">
 
@@ -22,7 +23,7 @@
                 <a href="javascript:void(0)" class="nav-link dropdown-toggle" id="SubDD1" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Computer Science</a>
                 <div class="dropdown-menu" aria-labelledby="SubDD1">
                   <% Event.where("events.Department = ? and events.Type = ?", 'Computer Science', 'Technical').each do |e| %>
-                    <%= link_to e.Title, new_feedback_path , :class => "link-unstyle" %>
+                    <%= link_to e.Title, event_path(e.id) , :class => "link-unstyle" %>
                   <% end %>
                 </div>
               </div>
@@ -30,7 +31,7 @@
                 <a href="javascript:void(0)" class="nav-link dropdown-toggle" id="SubDD2" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Electronics</a>
                 <div class="dropdown-menu" aria-labelledby="SubDD2">
                   <% Event.where("events.Department = ? and events.Type = ?", 'Electronics', 'Technical').each do |e| %>
-                    <%= link_to e.Title, new_feedback_path , :class => "link-unstyle" %>
+                    <%= link_to e.Title, event_path(e.id) , :class => "link-unstyle" %>
                   <% end %>
                 </div>
               </div>
@@ -38,7 +39,7 @@
                 <a href="javascript:void(0)" class="nav-link dropdown-toggle" id="SubDD3" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Robotics</a>
                 <div class="dropdown-menu" aria-labelledby="SubDD3">
                   <% Event.where("events.Department = ? and events.Type = ?", 'Robotics', 'Technical').each do |e| %>
-                    <%= link_to e.Title, new_feedback_path , :class => "link-unstyle" %>
+                    <%= link_to e.Title, event_path(e.id) , :class => "link-unstyle" %>
                   <% end %>
                 </div>
               </div>
@@ -46,7 +47,7 @@
                 <a href="javascript:void(0)" class="nav-link dropdown-toggle" id="SubDD3" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Civil</a>
                 <div class="dropdown-menu" aria-labelledby="SubDD3">
                   <% Event.where("events.Department = ? and events.Type = ?", 'Civil', 'Technical').each do |e| %>
-                    <%= link_to e.Title, new_feedback_path , :class => "link-unstyle" %>
+                    <%= link_to e.Title, event_path(e.id) , :class => "link-unstyle" %>
                   <% end %>
                 </div>
               </div>
@@ -54,7 +55,7 @@
                 <a href="javascript:void(0)" class="nav-link dropdown-toggle" id="SubDD3" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mechanical</a>
                 <div class="dropdown-menu" aria-labelledby="SubDD3">
                   <% Event.where("events.Department = ? and events.Type = ?", 'Mechanical', 'Technical').each do |e| %>
-                    <%= link_to e.Title, new_feedback_path , :class => "link-unstyle" %>
+                    <%= link_to e.Title, event_path(e.id) , :class => "link-unstyle" %>
                   <% end %>
                 </div>
               </div>
@@ -66,7 +67,7 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="WorkshopsDD">
             <% Event.where("events.Type = ?",  'Workshop').each do |e| %>
-              <%= link_to e.Title, new_feedback_path , :class => "link-unstyle" %>
+              <%= link_to e.Title, event_path(e.id) , :class => "link-unstyle" %>
             <% end %>
             </div>
           </li>
@@ -83,7 +84,7 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="SeminarsDD">
             <% Event.where("events.Type = ?", 'Seminar').each do |e| %>
-              <%= link_to e.Title, new_feedback_path , :class => "link-unstyle" %>
+              <%= link_to e.Title, event_path(e.id) , :class => "link-unstyle" %>
             <% end %>
             </div>
           </li>
@@ -93,7 +94,7 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="InformalsDD">
             <% Event.where("events.Type = ?", 'Informal').each do |e| %>
-              <%= link_to e.Title, new_feedback_path , :class => "link-unstyle" %>
+              <%= link_to e.Title, event_path(e.id) , :class => "link-unstyle" %>
             <% end %>
             </div>
           </li>
@@ -101,7 +102,7 @@
       </div>
     </nav>
 
-    <div  id="content-container" class="content container-fluid" style="margin: 40px auto 38px auto">
+    <div  id="content-container" class="content container-fluid back-image" style="margin: 40px auto 38px auto; background-color:grey; ">
 
       <%= yield %>
 

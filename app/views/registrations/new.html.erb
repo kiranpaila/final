@@ -1,5 +1,82 @@
-<h1>New Registration</h1>
 
-<%= render 'form', registration: @registration %>
+<%= form_with(model: @registration, local: true) do |form| %>
 
-<%= link_to 'Back', registrations_path %>
+  <div class="row">
+    <div class="col-lg-2 col-md-0">
+    </div>
+
+    <div class="col-lg-8 col-md-0">
+      <div class="text-center" >
+        <h3>Participant Registration Form</h3>
+      </div>
+
+      <form style="float:none; clear:both">
+        <div class="form-group row">
+          <%= form.label :Name, :class=>"col-sm-2 col-form-label" %>
+          <div class="col-sm-10">
+            <%= form.text_field :Name, id: :registration_Name, :class => 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group row">
+          <%= form.label :Event, :class=>"col-sm-2 col-form-label" %>
+          <div class="col-sm-10">
+            <%= form.select( :Event, Event.all.map{|u| [u.Title]}, {:include_blank => true}, :class => 'form-control') %>
+          </div>
+        </div>
+        <div class="form-group row">
+          <%= form.label :Contact_no, :class => 'col-sm-2 col-form-label' %>
+          <div class="col-sm-10">
+            <%= form.text_field :Contact_no, id: :registration_Contact_no, :class => 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group row">
+          <%= form.label :Email, :class => 'col-sm-2 col-form-label' %>
+          <div class="col-sm-10">
+            <%= form.text_field :Email, id: :registration_Email, :class => 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group row">
+          <%= form.label :College, :class => 'col-sm-2 col-form-label' %>
+          <div class="col-sm-10">
+            <%= form.text_field :College, id: :registration_College, :class => 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-12">
+            <%= form.submit "Register", :class => "btn btn-light link-unstyle pull-right", :role=>"btn"%>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="col-lg-2 col-md-0">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-2 col-md-0">
+    </div>
+    <div class="col-lg-8 col-md-0">
+      <div class="alert">
+        <% if @registration.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@registration.errors.count, "error") %> prohibited this registration from being saved:</h2>
+
+            <ul>
+            <% @registration.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+
+    <div class="col-lg-2 col-md-0">
+    </div>
+  </div>
+
+
+
+<%end%>

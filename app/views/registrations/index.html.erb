@@ -1,35 +1,32 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Registrations</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Event</th>
-      <th>Contact no</th>
-      <th>Email</th>
-      <th>College</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @registrations.each do |registration| %>
+<div class="row">
+  <div class="col-lg-3 col-md-0"></div>
+  <div class="col-lg-6 col-md-12">
+    <table class="table table-striped table-inverse">
       <tr>
-        <td><%= registration.Name %></td>
-        <td><%= registration.Event %></td>
-        <td><%= registration.Contact_no %></td>
-        <td><%= registration.Email %></td>
-        <td><%= registration.College %></td>
-        <td><%= link_to 'Show', registration %></td>
-        <td><%= link_to 'Edit', edit_registration_path(registration) %></td>
-        <td><%= link_to 'Destroy', registration, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <h3 colspan="5" style="text-align:center">Registrations</h3>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+      <tr>
+        <th>Name</th>
+        <th>Event</th>
+        <th>Contact no</th>
+        <th>Email</th>
+        <th>College</th>
+      </tr>
 
-<br>
+      <% @registrations.each do |registration| %>
+        <tr>
+          <td><%= registration.Name %></td>
+          <td><%= registration.Event %></td>
+          <td><%= registration.Contact_no %></td>
+          <td><%= registration.Email %></td>
+          <td><%= registration.College %></td>
+        </tr>
+      <% end %>
 
-<%= link_to 'New Registration', new_registration_path %>
+    </table>
+
+  </div>
+  <div class="col-lg-3 col-md-0"></div>
+</div>

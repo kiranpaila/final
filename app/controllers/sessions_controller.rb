@@ -10,10 +10,11 @@ class SessionsController < ApplicationController
 
       # params[:session][:remember_me] == '1' ? remember(user) : forget(user)
       session[:admin] = user.id
+      session[:isadmin] = user.isadmin
 
       redirect_to users_path
     else
-      flash[:notice] = 'Invalid email/password combination'
+      flash[:notice] = 'Invalid name/password combination'
       render 'new'
     end
   end

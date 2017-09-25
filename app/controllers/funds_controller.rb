@@ -1,7 +1,7 @@
 class FundsController < ApplicationController
   layout "back_layout"
   before_action :authorize
-  before_action :set_fund, only: [:show, :edit, :update, :destroy]
+  before_action :set_fund, only: [:edit, :update, :destroy]
 
   # GET /funds
   # GET /funds.json
@@ -47,8 +47,8 @@ class FundsController < ApplicationController
 
     respond_to do |format|
       if @fund.save
-        format.html { redirect_to @fund, notice: 'Fund was successfully created.' }
-        format.json { render :show, status: :created, location: @fund }
+        format.html { redirect_to funds_path, notice: 'Fund was successfully created.' }
+        format.json { render :index, status: :created, location: funds_path }
       else
         format.html { render :new }
         format.json { render json: @fund.errors, status: :unprocessable_entity }
@@ -61,8 +61,8 @@ class FundsController < ApplicationController
   def update
     respond_to do |format|
       if @fund.update(fund_params)
-        format.html { redirect_to @fund, notice: 'Fund was successfully updated.' }
-        format.json { render :show, status: :ok, location: @fund }
+        format.html { redirect_to funds_path, notice: 'Fund was successfully updated.' }
+        format.json { render :index, status: :ok, location: funds_path}
       else
         format.html { render :edit }
         format.json { render json: @fund.errors, status: :unprocessable_entity }
