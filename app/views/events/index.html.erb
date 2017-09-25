@@ -4,7 +4,7 @@
   <div class="col-lg-12">
     <table class="table table-striped table-inverse">
       <tr>
-        <h3 colspan="13" style="text-align:center">All Events</h3>
+        <h3 colspan="12" style="text-align:center">All Events</h3>
       </tr>
       <tr>
         <th>Title</th>
@@ -16,7 +16,6 @@
         <th>Department</th>
         <th>Type</th>
         <th>Cordinatordetails</th>
-        <th>Add photo</th>
         <th colspan="3"></th>
       </tr>
 
@@ -31,9 +30,8 @@
           <td><%= event.Department %></td>
           <td><%= event.Type %></td>
           <td><%= event.CordinatorDetails %></td>
-          <td><%= File.basename event.add_photo.to_s %></td>
-          <td><%= link_to 'Edit', edit_event_path(event), :class =>"link-unstyle" %></td>
-          <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' }, :class =>"link-unstyle" %></td>
+          <td><%= link_to 'Edit', edit_event_path(event), :class =>"link-unstyle1" %></td>
+          <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' }, :class =>"link-unstyle1" %></td>
         </tr>
       <% end %>
 

@@ -15,3 +15,4 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 
 Rails.application.config.assets.precompile += %w( welcomeindex.css )
 Rails.application.config.assets.precompile += %w( welcomeindex.js )
+Rails.application.config.assets.precompile += %w( welcomehead.css )

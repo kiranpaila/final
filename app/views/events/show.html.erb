@@ -1,52 +1,65 @@
+<div class="row event-block" style="font-size: 50px;">
+  <div class="col-md-3 col-sm-12">
+  </div>
+  <div class="col-md-6 col-sm-12 text-center">
+    <%= @event.Title %>
+  </div>
+  <div class="col-md-3 col-sm-12">
+  </div>
+</div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @event.Title %>
-</p>
+<div class="row event-block" style="font-size: 30px;">
+  <div class="col-md-3 col-sm-12">
+  </div>
+  <div class="col-md-6 col-sm-12 text-center">
+    <%= @event.Description %>
+  </div>
+  <div class="col-md-3 col-sm-12">
+  </div>
+</div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @event.Description %>
-</p>
+<div class="row event-sub-block" style="font-size: 22px;">
+  <div class="col-md-6 col-sm-12 text-center">
+    <div class="row">
+      <div class="col-md-12">
+        <span><b>Venue:</b> <%= @event.Venue %></span>
+      </div>
+      <div class="col-md-12">
+        <span><b>Registration Fee:</b>  <%= @event.Cost %></span>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 col-sm-12 text-center">
+    <div class="row">
+      <div class="col-md-12">
+        <span><b>Date:</b> <%= @event.Date.strftime('%m/%d/%Y') %></span>
+      </div>
+      <div class="col-md-12">
+        <span><b>Time: </b> <%= @event.Time.strftime('%H:%M') %></span>
+      </div>
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>Venue:</strong>
-  <%= @event.Venue %>
-</p>
-
-<p>
-  <strong>Time:</strong>
-  <%= @event.Time %>
-</p>
-
-<p>
-  <strong>Date:</strong>
-  <%= @event.Date %>
-</p>
-
-<p>
-  <strong>Cost:</strong>
-  <%= @event.Cost %>
-</p>
-
-<p>
-  <strong>Department:</strong>
-  <%= @event.Department %>
-</p>
-
-<p>
-  <strong>Type:</strong>
-  <%= @event.Type %>
-</p>
-
-<p>
-  <strong>Cordinatordetails:</strong>
-  <%= @event.CordinatorDetails %>
-</p>
-
-<p>
-  <strong>Add photo:</strong>
-  <%#= <%=  @event.add_photo%>
-  <%= image_tag @event.add_photo.thumb.url %>
-</p>
-<%= link_to "Registration", new_registration_path, :class => "btn btn-light link-unstyle pull-right"%>
+<div class="row event-sub-block" style="font-size: 22px;">
+  <div class="col-md-6 col-sm-12 text-center">
+    <div class="row">
+      <div class="col-md-12">
+        <span><b>Co-ordinator Details:</b></span>
+      </div>
+      <div class="col-md-12">
+          <%= @co_name[0] %>
+      </div>
+      <div class="col-md-12">
+          <%= @co_email[0] %>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 col-sm-12 text-center event-button">
+    <div class="row">
+      <div class="col-md-12">
+        <%= link_to "Registration", new_registration_path, :class => "btn btn-light link-unstyle pull-right"%>
+      </div>
+    </div>
+  </div>
+</div>

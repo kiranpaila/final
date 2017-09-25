@@ -12,6 +12,9 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
+    #@event.CordinatorDetails.
+    @co_name = Eventcoordinator.where(id: @event.CordinatorDetails).pluck(:name)
+    @co_email = Eventcoordinator.where(id: @event.CordinatorDetails).pluck(:email)
   end
 
   # GET /events/new
@@ -75,6 +78,6 @@ class EventsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def event_params
-    params.require(:event).permit(:Title, :Description, :Venue, :Time, :Date, :Cost, :Department, :Type, :CordinatorDetails, :add_photo)
+    params.require(:event).permit(:Title, :Description, :Venue, :Time, :Date, :Cost, :Department, :Type, :CordinatorDetails)
   end
 end
