@@ -33,7 +33,6 @@
       <div class="alert">
         <% if @news.errors.any? %>
           <div id="error_explanation">
-            <h2><%= pluralize(@news.errors.count, "error") %> prohibited this feedback from being saved:</h2>
 
             <ul>
             <% @news.errors.full_messages.each do |message| %>

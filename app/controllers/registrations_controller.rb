@@ -1,8 +1,8 @@
 class RegistrationsController < ApplicationController
   layout :resolve_layout
-  before_action :authorize, :except => [:new]
-
+  before_action :authorize, :only => [:index]
   before_action :set_registration, only: [:edit, :update, :destroy]
+
 
   # GET /registrations
   # GET /registrations.json
@@ -32,7 +32,7 @@ class RegistrationsController < ApplicationController
     respond_to do |format|
       if @registration.save
         format.html { redirect_to root_path, notice: 'Registration was successfully created.' }
-        format.json { render 'root', status: :created, location: registrations_path }
+        format.json { render 'root', status: :created, location: root_path }
       else
         format.html { render :new }
         format.json { render json: @registration.errors, status: :unprocessable_entity }
@@ -46,9 +46,9 @@ class RegistrationsController < ApplicationController
     respond_to do |format|
       if @registration.update(registration_params)
         format.html { redirect_to registrations_path, notice: 'Registration was successfully updated.' }
-        format.json { render :index, status: :ok, location: registrations_path }
+        format.json { render :index, status: :ok, location: root_path }
       else
-        format.html { render :edit }
+        format.html { render :new }
         format.json { render json: @registration.errors, status: :unprocessable_entity }
       end
     end
@@ -71,7 +71,7 @@ class RegistrationsController < ApplicationController
   end
 
   def resolve_layout
-    action_name == 'new' ? 'front_layout' : 'back_layout'
+    action_name == 'index' ? 'back_layout' : 'front_layout'
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

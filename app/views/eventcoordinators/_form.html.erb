@@ -52,7 +52,6 @@
       <div class="alert">
         <% if eventcoordinator.errors.any? %>
           <div id="error_explanation">
-            <h2><%= pluralize(eventcoordinator.errors.count, "error") %> prohibited this eventcoordinator from being saved:</h2>
 
             <ul>
             <% eventcoordinator.errors.full_messages.each do |message| %>

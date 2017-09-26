@@ -18,6 +18,8 @@ Rails.application.routes.draw do
 
   get 'about_us/data'
 
+  get 'registrations/success'
+
 
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'

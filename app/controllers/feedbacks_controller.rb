@@ -1,7 +1,6 @@
 class FeedbacksController < ApplicationController
   layout :resolve_layout
-  before_action :authorize, :except => [:new]
-
+  before_action :authorize, :only => [:index]
 
   def index
     @feedbacks = Feedback.all
