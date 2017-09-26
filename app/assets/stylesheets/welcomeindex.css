@@ -15,9 +15,22 @@
  */
 
 body{
-  background-color: grey;
+  background-color: #94618E;
 }
 
+.head1{
+  font-size: 50px;
+  font-weight: 100px;
+  font-style: oblique;
+  color: white;
+}
+
+.head2{
+  font-size: 20px;
+  font-weight: 100px;
+  font-style: oblique;
+  color: white;
+}
  .jumbotron{
   height: calc(100vh - 78px);
   min-height: calc(100vh - 155px);
@@ -48,11 +61,12 @@ div.jumbotron.col-lg-2.col-md-12{
     width: 100%;
     //height: 56px;
     //line-height: 56px;
-    background-color: #f5f5f5;
+    background-color: #88d317 !important;
 }
 
 .navbar{
   padding: 0px;
+  background-color: #88d317 !important;
 }
 
 .btn-circle {
@@ -320,6 +334,6 @@ text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px
   text-align: center;
 }
 
-.welcome {
-  background-color: #A9A9A9;
+.welcome, .welcome1 {
+  background-color: #1a0315 ;
 }

@@ -16,6 +16,8 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 
+  get 'about_us/data'
+
 
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'

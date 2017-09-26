@@ -102,7 +102,7 @@
       </div>
     </nav>
 
-    <div  id="content-container" class="content container-fluid" style="margin: 40px auto 38px auto; background-color:grey; ">
+    <div  id="content-container" class="content container-fluid" style="margin: 40px auto 38px auto; background-color: #94618E; ">
 
       <%= yield %>
 
@@ -111,10 +111,11 @@
     <footer class="footer navbar-fixed-bottom">
 
       <div class="container-fluid d-flex justify-content-between">
-        <span class="btn text-muted">Made with
+        <span class="btn">Made with
           <i class="fa fa-heart" aria-hidden="true"></i>.</span>
         <span class="btn">
-          <span><%= link_to 'About Us', about_us_index_path, :class => "link-unstyle" %></span>
+
+          <span><%= link_to 'Contact Us', about_us_index_path, :class => "link-unstyle" %></span>
           <span><%= link_to 'Feedback', new_feedback_path , :class => "link-unstyle" %></span>
         </span>
       </div>
