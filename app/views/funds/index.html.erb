@@ -20,8 +20,8 @@
           <td><%= fund.amount %></td>
           <td><%= fund.status %></td>
           <td><%= fund.event %></td>
-          <td><%= link_to 'Edit', edit_fund_path(fund), :class => 'link-unstyle' %></td>
-          <td><%= link_to 'Destroy', fund, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'link-unstyle' %></td>
+          <td><%= link_to 'Edit', edit_fund_path(fund), :class => 'link-unstyle1' %></td>
+          <td><%= link_to 'Destroy', fund, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'link-unstyle1' %></td>
         </tr>
       <% end %>
 
@@ -46,8 +46,8 @@
         <tr>
           <td><%= expense.for %></td>
           <td><%= expense.amount %></td>
-          <td><%= link_to 'Edit', edit_expense_path(expense), :class => 'link-unstyle' %></td>
-          <td><%= link_to 'Delete', expense, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'link-unstyle' %></td>
+          <td><%= link_to 'Edit', edit_expense_path(expense), :class => 'link-unstyle1' %></td>
+          <td><%= link_to 'Delete', expense, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'link-unstyle1  ' %></td>
         </tr>
       <% end %>
 

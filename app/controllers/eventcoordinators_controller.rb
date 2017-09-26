@@ -71,6 +71,6 @@ class EventcoordinatorsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def eventcoordinator_params
-    params.require(:eventcoordinator).permit(:Event, :Name, :Name, :Contact_no, :Email)
+    params.require(:eventcoordinator).permit(:Event, :Name, :Contact_no, :Email)
   end
 end

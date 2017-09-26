@@ -4,7 +4,7 @@
 
   <div class="jumbotron welcome  col-lg-10 col-md-12 text-center">
 
-      <span><%= link_to 'Tatva17', about_us_data_path, :class => "hit-the-floor" %></span>
+      <span><%= link_to 'Tathva 17', about_us_data_path, :class => "hit-the-floor link-unstyle1" %></span>
 
       <div class="head1">October 13,14,15</div>
       <div class="head2">Get ready to show your skills</div>
@@ -22,7 +22,7 @@
                 <li class="card">
                   <div class="card-body">
                     <%= news.created_at.strftime('%m/%d/%Y') %><br/>
-                     <%= news.message %>
+                     <span style="word-wrap: break-all"><%= news.message %></span>
                   </div>
                 </li>
             <% end %>
