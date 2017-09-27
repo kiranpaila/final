@@ -58,4 +58,8 @@ class Registration < ApplicationRecord
     order('created_at')
   end
 
+
+  def self.search(search)
+    where("name || event LIKE ?", "%#{search}%")
+  end
 end

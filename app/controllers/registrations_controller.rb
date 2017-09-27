@@ -6,25 +6,16 @@ class RegistrationsController < ApplicationController
   # GET /registrations
   # GET /registrations.json
   def index
+    #@registrations = Registration.all
+
     @registrations = Registration.all
-
-    @filterrific = initialize_filterrific(
-      Registration,
-      params[:filterrific],
-      select_options: {
-        sorted_by: Registration.options_for_sorted_by,
-        with_Event: Registration.options_for_select,
-        with_Name: Registration.options_for_select,
-        with_College: Registration.options_for_select,
-        with_created_at: Registration.options_for_select
-      }
-    ) or return
-    @registrations = @filterrific.find.page(params[:page])
-
-    respond_to do |format|
-      format.html
-      format.js
+    if params[:search]
+      @registrations = Registration.search(params[:search]).order("created_at DESC")
+    else
+      @registrations = Registration.all.order('created_at DESC')
     end
+
+
   end
 
   # GET /registrations/1
