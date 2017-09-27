@@ -3,16 +3,37 @@ class RegistrationsController < ApplicationController
   before_action :authorize, :only => [:index]
   before_action :set_registration, only: [:edit, :update, :destroy]
 
-
   # GET /registrations
   # GET /registrations.json
   def index
     @registrations = Registration.all
+
+    @filterrific = initialize_filterrific(
+      Registration,
+      params[:filterrific],
+      select_options: {
+        sorted_by: Registration.options_for_sorted_by,
+        with_Event: Registration.options_for_select,
+        with_Name: Registration.options_for_select,
+        with_College: Registration.options_for_select,
+        with_created_at: Registration.options_for_select
+      }
+    ) or return
+    @registrations = @filterrific.find.page(params[:page])
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # GET /registrations/1
   # GET /registrations/1.json
   def show
+    @event = session[:event]
+    @name = session[:name]
+    #@user_all_event = Event.joins(:registrations).select('events.Title, events.Time, events.Date').where(registrations.Name: @name)
+    @user_all_event = Registration.select(:Event).where({Name: @name}).distinct
   end
 
   # GET /registrations/new
@@ -31,8 +52,10 @@ class RegistrationsController < ApplicationController
 
     respond_to do |format|
       if @registration.save
-        format.html { redirect_to root_path, notice: 'Registration was successfully created.' }
-        format.json { render 'root', status: :created, location: root_path }
+        session[:event] = @registration.Event
+        session[:name] = @registration.Name
+        format.html { redirect_to registrations_success_path, notice: 'Registration was successfully created.' }
+        format.json { render :show, status: :created, location: root_path }
       else
         format.html { render :new }
         format.json { render json: @registration.errors, status: :unprocessable_entity }
@@ -78,4 +101,5 @@ class RegistrationsController < ApplicationController
   def registration_params
     params.require(:registration).permit(:Name, :Event, :Contact_no, :Email, :College)
   end
+
 end

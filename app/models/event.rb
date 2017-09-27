@@ -1,7 +1,6 @@
 class Event < ApplicationRecord
   has_many :registrations, :foreign_key=>'Event', :primary_key=>'Title'
 
-
   validates :Title, presence: true, length: {maximum: 50}
   validates :Description, presence: true
   validates :Venue, presence: true

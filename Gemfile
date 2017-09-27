@@ -39,6 +39,8 @@ gem "font-awesome-rails"
 gem 'validates_email_format_of'
 gem 'jquery-atwho-rails'
 gem 'activerecord-session_store'
+gem 'filterrific'
+gem 'will_paginate', '~> 3.1.0'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

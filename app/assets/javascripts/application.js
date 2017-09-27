@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require filterrific/filterrific-jquery
 //= require popper
 //= require turbolinks
 //= require bootstrap-sprockets

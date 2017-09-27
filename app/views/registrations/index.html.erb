@@ -1,32 +1,14 @@
 
+<%#
+  Filterrific adds the `form_for_filterrific` view helper:
+  * adds dom id 'filterrific_filter'
+  * applies javascript behaviors:
+      * AJAX form submission on change
+      * AJAX spinner while AJAX request is being processed
+  * sets form_for options like :url, :method and input name prefix
+%>
 
-<div class="row">
-  <div class="col-lg-3 col-md-0"></div>
-  <div class="col-lg-6 col-md-12">
-    <table class="table table-striped table-inverse">
-      <tr>
-        <h3 colspan="5" style="text-align:center">Registrations</h3>
-      </tr>
-      <tr>
-        <th>Name</th>
-        <th>Event</th>
-        <th>Contact no</th>
-        <th>Email</th>
-        <th>College</th>
-      </tr>
-
-      <% @registrations.each do |registration| %>
-        <tr>
-          <td><%= registration.Name %></td>
-          <td><%= registration.Event %></td>
-          <td><%= registration.Contact_no %></td>
-          <td><%= registration.Email %></td>
-          <td><%= registration.College %></td>
-        </tr>
-      <% end %>
-
-    </table>
-
-  </div>
-  <div class="col-lg-3 col-md-0"></div>
-</div>
+<%= render(
+  partial: 'registrations/list',
+  locals: { registrations: @registrations }
+) %>

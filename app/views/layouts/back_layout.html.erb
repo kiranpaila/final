@@ -15,7 +15,7 @@
         <ul class="container nav navbar-nav d-flex justify-content-between">
 
           <% if logged_in? %>
-            <li class="nav-item"><%= link_to 'Users', users_path, :class => "nav-link" %></li>
+            <li class="nav-item"><%= link_to 'Admins', users_path, :class => "nav-link" %></li>
             <li class="nav-item"><%= link_to 'Events', events_path, :class => "nav-link" %></li>
             <li class="nav-item"><%= link_to 'Fund Management', funds_path, :class => "nav-link" %></li>
             <li class="nav-item"><%= link_to 'Registration', registrations_path, :class => "nav-link" %></li>
@@ -27,6 +27,7 @@
                 Me
               </a>
               <div class="dropdown-menu" aria-labelledby="profileDD">
+                <%= link_to 'Home', root_path, :class => "dropdown-item" %>
                 <%= link_to 'Edit Profile', edit_user_path(current_user), :class => "dropdown-item" %>
                 <%= link_to 'Logout', logout_path, :method => :delete, :class => "dropdown-item" %>
               </div>
