@@ -4,4 +4,7 @@
 
 
 *complete 'demo scaffold' and 'example controller' is useless. just for helping purpose. you can remove it
-# final
+
+Techfest Management System
+
+This is the fest management system we created during the coursework of SSL Lab
